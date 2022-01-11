@@ -1,13 +1,17 @@
 package Algorismes;
 
-public class Avid {
-    private int files;
-    private int columnes;
-    private String[][] taula;
-    public Avid(int files, int columnes){
-        taula = new String[files][columnes];
-        this.files = files;
-        this.columnes = columnes;
+public class Avid extends Laberint {
+
+    public Avid(String[][] laberint, int files, int columnes, int x, int y, int[] inici, int[] fi){
+        super(laberint, files, columnes, x, y, inici, fi);
+    }
+
+    public void resoldreLaberint(){
+        for (int i = 0; i < columnes; i++){
+            for (int j = 0; j < files; j++){
+
+            }
+        }
     }
 
 }
