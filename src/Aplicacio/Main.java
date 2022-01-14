@@ -1,32 +1,52 @@
 package Aplicacio;
+import Algorismes.Avid;
+import Algorismes.Celda;
+import Algorismes.Laberint;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import Algorismes.Avid;
-import Algorismes.Laberint;
-import RecursDinamic.DadesDinamic;
-import RecursDinamic.Data;
-import RecursDinamic.Node;
-import RecursDinamic.RecursDinamic;
-
-
 public class Main {
-	Scanner s = new Scanner(System.in);
-    public static void main(String[] args) {
-    	
-        Avid l1= new Avid(Integer.parseInt(particions[0]),Integer.parseInt(particions[0]),Integer.parseInt(particions[0]),Integer.parseInt(particions[0]),Integer.parseInt(particions[0]),Integer.parseInt(particions[0]),Integer.parseInt(particions[0]));
-    	try {
-			llegirLiniesFitxer(6);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	
-    	
+    Scanner s = new Scanner(System.in);
+    public static void main(String[] args) throws FileNotFoundException {
+
+        String[] textLlegit= llegirLiniesFitxer(1);
+        String[] dades;
+        dades = textLlegit[0].split(", ");
+
+        Celda[][] maze= new Celda[Integer.parseInt(dades[0])][Integer.parseInt(dades[1])];
+        int iniciX=(Integer.parseInt(dades[2]));
+        int iniciY=(Integer.parseInt(dades[3]));
+        int fiX=(Integer.parseInt(dades[4]));
+        int fiY=(Integer.parseInt(dades[5]));
+
+        Avid l1= new Avid(maze,Integer.parseInt(dades[0])-1,Integer.parseInt(dades[1]), iniciX, iniciY, fiX, fiY);
+
+        int files = Integer.parseInt(dades[0]);
+        int columnes = Integer.parseInt(dades[1]);
+
+        String[] result = llegirLiniesFitxer(files+1);
+        String[] dadesResult;
+
+        for(int i=1; i<files; i++) {
+            dadesResult = result[i].split(", ");
+            for (int j = 0; j < columnes; j++) {
+                l1.getLaberint()[i-1][j] = new Celda(dadesResult[j]);
+                l1.getLaberint()[i-1][j].llegirOperador();
+            }
+        }
+
+        for(int i=0;i<l1.getFiles(); i++) {
+            for(int j=0;j<l1.getColumnes(); j++) {
+                System.out.print(l1.getLaberint()[i][j].getCaracter() + "\t");
+            }
+            System.out.println("\n");
+        }
+        l1.resoldreLaberint();
     }
-    
-    
+
+
     /*Guardem en una String les linies*/
     public static String[] llegirLiniesFitxer(int nLinies) throws FileNotFoundException {
 
@@ -34,29 +54,13 @@ public class Main {
         Scanner f = new Scanner(new File("laberint.txt"));
         for (int i = 0; i < nLinies; i++) {
 
-        		lector[i]=f.nextLine();
-        	
-        }        
+            lector[i]=f.nextLine();
+
+        }
         f.close();
         return lector;
     }
-    
-    
-    public static String[] guardarDades(int mida, String[] dades) throws FileNotFoundException {        
-        
 
-        for(int i = 0; i< mida; i++){
-            String s = dades[i];
-            String[]particions = s.split(";");
-            String files = particions[0];
-            String columnes = particions[1];
-            String filPartida = particions[2];
-            String colPartida = particions[3];
-            String filFinal = particions[4];
-            String colFinal = particions[5];
 
-        }
-        return dades;
-    }
-    
+
 }

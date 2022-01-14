@@ -2,11 +2,11 @@ package Algorismes;
 
 public class Laberint {
 	//Variables
-	protected String[][] laberint;
+	protected Celda[][] laberint;
 	protected int files,columnes;
-	protected int x,y ;//PEr on passem
-	protected int inici[];
-	protected int fi[];
+	protected int x,y;//PEr on passem
+	protected int fiX;
+	protected int fiY;
 	
 	/**
 	 * @param laberint
@@ -14,24 +14,22 @@ public class Laberint {
 	 * @param columnes
 	 * @param x
 	 * @param y
-	 * @param inici
-	 * @param fi
 	 */
 	
-	public Laberint(String[][] laberint, int files, int columnes, int x, int y, int[] inici, int[] fi) {
+	public Laberint(Celda[][] laberint, int files, int columnes, int x, int y, int fiX, int fiY) {
 		this.laberint = laberint;
 		this.files = files;
 		this.columnes = columnes;
 		this.x = x;
 		this.y = y;
-		this.inici = inici;
-		this.fi = fi;
+		this.fiX = fiX;
+		this.fiY = fiY;
 	}
 
-	public String[][] getLaberint() {
+	public Celda[][] getLaberint() {
 		return laberint;
 	}
-	public void setLaberint(String[][] laberint) {
+	public void setLaberint(Celda[][] laberint) {
 		this.laberint = laberint;
 	}
 	public int getFiles() {
@@ -58,18 +56,5 @@ public class Laberint {
 	public void setY(int y) {
 		this.y = y;
 	}
-	public int[] getInici() {
-		return inici;
-	}
-	public void setInici(int[] inici) {
-		this.inici = inici;
-	}
-	public int[] getFi() {
-		return fi;
-	}
-	public void setFi(int[] fi) {
-		this.fi = fi;
-	}
-	
 	
 }
