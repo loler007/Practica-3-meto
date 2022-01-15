@@ -1,9 +1,5 @@
 package Algorismes;
 
-import java.util.Arrays;
-
-import static java.lang.Character.getNumericValue;
-
 public class Celda {
     private int num;
     private String caracter;
@@ -17,8 +13,9 @@ public class Celda {
     }
     public void llegirOperador(){
         if (!caracter.equals("NA")){
-            operador = caracter.charAt(0);
-            num = caracter.charAt(1);
+            separat = caracter.split("", 2);
+            operador = separat[0];
+            num = Integer.parseInt(separat[1]);
             potPassar = true;
         } else{
             potPassar = false;

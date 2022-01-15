@@ -90,6 +90,9 @@ public class Avid extends Laberint {
             case 2:
                 j--;
                 break;
+            case 3:
+                i++;
+                break;
         }
 
         return maxim;
