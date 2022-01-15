@@ -13,7 +13,7 @@ public class Avid extends Laberint {
         //punts seran els punts finals i comencem amb el valor de l'inici
         int punts = laberint[i][j].getNum();
 
-        while (punts > 0 && i != fiX && j != fiY && laberint[i][j].isPotPassar()) {
+        while (punts > 0 && !(i == fiX && j == fiY)) {
             laberint[i][j].setCaracter("*");
             laberint[i][j].setPotPassar(false);
             int puntsGran = agafarMesGran();
@@ -24,10 +24,18 @@ public class Avid extends Laberint {
                 System.out.println(punts);
                 return;
             }
+
             punts = punts + puntsGran;
+            for(int i=0;i<5; i++) {
+                for(int j=0;j<7; j++) {
+                    System.out.print(laberint[i][j].getCaracter() + "\t");
+                }
+                System.out.println("\n");
+            }
+            System.out.println("hola");
 
         }
-        System.out.println(punts);
+        laberint[i][j].setCaracter("*");
     }
 
     //k = 0: moure dreta
@@ -38,8 +46,7 @@ public class Avid extends Laberint {
         int resultat, maxim = -1000, posMax = -1, posX = i, posY = j;
         for (int k = 0; k < 4; k++) {
             if (k == 0) {
-                if (laberint[i][j+1].isPotPassar()) {
-
+                if (j+1 < columnes && laberint[i][j+1].isPotPassar()) {
                     resultat = laberint[i][j+1].operar(laberint[i][j].getNum(), laberint[i][j+1].getNum());
                     if (resultat > maxim) {
                         posMax = k;
@@ -66,7 +73,6 @@ public class Avid extends Laberint {
                 if (i - 1 >= 0 && laberint[i - 1][j].isPotPassar()) {
                     resultat = laberint[i - 1][j].operar(laberint[i][j].getNum(), laberint[i - 1][j].getNum());
                     if (resultat > maxim) {
-                        laberint[i][j].setPotPassar(false);
                         i--;
                         return resultat;
                     }
