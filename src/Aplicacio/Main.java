@@ -21,7 +21,7 @@ public class Main {
         int fiX=(Integer.parseInt(dades[4]));
         int fiY=(Integer.parseInt(dades[5]));
 
-        Avid l1= new Avid(maze,Integer.parseInt(dades[0])-1,Integer.parseInt(dades[1]), iniciX, iniciY, fiX, fiY);
+        Avid l1= new Avid(maze,Integer.parseInt(dades[0]),Integer.parseInt(dades[1]), iniciX, iniciY, fiX, fiY);
 
         int files = Integer.parseInt(dades[0]);
         int columnes = Integer.parseInt(dades[1]);
@@ -29,7 +29,7 @@ public class Main {
         String[] result = llegirLiniesFitxer(files+1);
         String[] dadesResult;
 
-        for(int i=1; i<files; i++) {
+        for(int i=1; i<=files; i++) {
             dadesResult = result[i].split(", ");
             for (int j = 0; j < columnes; j++) {
                 l1.getLaberint()[i-1][j] = new Celda(dadesResult[j]);
@@ -37,13 +37,27 @@ public class Main {
             }
         }
 
-        for(int i=0;i<l1.getFiles(); i++) {
-            for(int j=0;j<l1.getColumnes(); j++) {
+//        for(int i=0;i<l1.getFiles(); i++) {
+//            for(int j=0;j<l1.getColumnes(); j++) {
+//                System.out.print(l1.getLaberint()[i][j].getCaracter() + "\t");
+//            }
+//            System.out.println("\n");
+//        }
+//        l1.resoldreLaberint();
+
+        for(int i=0;i<5; i++) {
+            for(int j=0;j<7; j++) {
                 System.out.print(l1.getLaberint()[i][j].getCaracter() + "\t");
             }
             System.out.println("\n");
         }
         l1.resoldreLaberint();
+        for(int i=0;i<5; i++) {
+            for(int j=0;j<7; j++) {
+                System.out.print(l1.getLaberint()[i][j].getCaracter() + "\t");
+            }
+            System.out.println("\n");
+        }
     }
 
 

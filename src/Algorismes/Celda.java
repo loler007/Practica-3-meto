@@ -1,10 +1,13 @@
 package Algorismes;
 
+import static java.lang.Character.getNumericValue;
+
 public class Celda {
     private int num;
     private String caracter;
-    private char operador;
+    private String operador;
     private boolean potPassar;
+    private String[] separat;
 
     public Celda(String caracter){
         this.caracter = caracter;
@@ -22,11 +25,11 @@ public class Celda {
     }
 
     public int operar(int x, int y){
-        if (operador == '+')
+        if (operador.equals("+"))
             return x+y;
-        else if (operador == '-')
+        else if (operador.equals("-"))
             return x-y;
-        else if (operador == '*')
+        else if (operador.equals("*"))
             return x*y;
         else
             return x/y;
@@ -48,11 +51,11 @@ public class Celda {
         this.potPassar = potPassar;
     }
 
-    public char getOperador() {
+    public String getOperador() {
         return operador;
     }
 
-    public void setOperador(char operador) {
+    public void setOperador(String operador) {
         this.operador = operador;
     }
 
