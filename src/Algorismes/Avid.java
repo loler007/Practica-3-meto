@@ -46,7 +46,7 @@ public class Avid extends Laberint {
         int resultat, maxim = -1000, posMax = -1, posX = i, posY = j;
         for (int k = 0; k < 4; k++) {
             if (k == 0) {
-                if (j+1 < columnes && laberint[i][j+1].isPotPassar()) {
+                if (esFactible(k, i, j)) {
                     resultat = laberint[i][j+1].operar(laberint[i][j].getNum(), laberint[i][j+1].getNum());
                     if (resultat > maxim) {
                         posMax = k;
@@ -54,7 +54,7 @@ public class Avid extends Laberint {
                     }
                 }
             } else if (k == 1) {
-                if (i+1 < files && laberint[i+1][j].isPotPassar() ) {
+                if (esFactible(k, i, j)) {
                     resultat = laberint[i+1][j].operar(laberint[i][j].getNum(), laberint[i+1][j].getNum());
                     if (resultat > maxim) {
                         posMax = k;
@@ -62,7 +62,7 @@ public class Avid extends Laberint {
                     }
                 }
             } else if (k == 2) {
-                if (j - 1 >= 0 && laberint[i][j-1].isPotPassar()) {
+                if (esFactible(k, i, j)) {
                     resultat = laberint[i][j-1].operar(laberint[i][j].getNum(), laberint[i][j-1].getNum());
                     if (resultat > maxim) {
                         posMax = k;
@@ -70,7 +70,7 @@ public class Avid extends Laberint {
                     }
                 }
             } else {
-                if (i - 1 >= 0 && laberint[i - 1][j].isPotPassar()) {
+                if (esFactible(k, i, j)) {
                     resultat = laberint[i - 1][j].operar(laberint[i][j].getNum(), laberint[i - 1][j].getNum());
                     if (resultat > maxim) {
                         i--;
@@ -80,21 +80,11 @@ public class Avid extends Laberint {
             }
 
         }
-        switch (posMax){
-            case 0:
-                j++;
-                break;
-            case 1:
-                i++;
-                break;
-            case 2:
-                j--;
-                break;
-            case 3:
-                i++;
-                break;
+        switch (posMax) {
+            case 0 -> j++;
+            case 1 -> i++;
+            case 2 -> j--;
         }
-
         return maxim;
     }
 }

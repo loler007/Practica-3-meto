@@ -26,6 +26,18 @@ public class Laberint {
 		this.fiY = fiY;
 	}
 
+	public boolean esFactible(int k, int i, int j){
+		switch (k) {
+			case 0 -> j++;
+			case 1 -> i++;
+			case 2 -> j--;
+			default -> i--;
+		}
+		if (j >= 0 && j < columnes && i >= 0 && i < files)
+			return laberint[i][j].isPotPassar();
+		return false;
+	}
+
 	public Celda[][] getLaberint() {
 		return laberint;
 	}

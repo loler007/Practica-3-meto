@@ -1,7 +1,7 @@
 package Aplicacio;
 import Algorismes.Avid;
 import Algorismes.Celda;
-import Algorismes.Laberint;
+import Algorismes.Poda;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class Main {
         int fiX=(Integer.parseInt(dades[4]));
         int fiY=(Integer.parseInt(dades[5]));
 
-        Avid l1= new Avid(maze,Integer.parseInt(dades[0]),Integer.parseInt(dades[1]), iniciX, iniciY, fiX, fiY);
+        Poda l1= new Poda(maze,Integer.parseInt(dades[0]),Integer.parseInt(dades[1]), iniciX, iniciY, fiX, fiY);
 
         int files = Integer.parseInt(dades[0]);
         int columnes = Integer.parseInt(dades[1]);
@@ -51,13 +51,13 @@ public class Main {
             }
             System.out.println("\n");
         }
-        l1.resoldreLaberint();
-        for(int i=0;i<5; i++) {
-            for(int j=0;j<7; j++) {
-                System.out.print(l1.getLaberint()[i][j].getCaracter() + "\t");
-            }
-            System.out.println("\n");
-        }
+        l1.assignacio(iniciX, iniciY, l1.getLaberint()[iniciX][iniciY].getNum());
+//        for(int i=0;i<5; i++) {
+//            for(int j=0;j<7; j++) {
+//                System.out.print(l1.getLaberint()[i][j].getCaracter() + "\t");
+//            }
+//            System.out.println("\n");
+//        }
     }
 
 
