@@ -7,15 +7,7 @@ public class Laberint {
 	protected int x,y;//PEr on passem
 	protected int fiX;
 	protected int fiY;
-	
-	/**
-	 * @param laberint
-	 * @param files
-	 * @param columnes
-	 * @param x
-	 * @param y
-	 */
-	
+
 	public Laberint(Celda[][] laberint, int files, int columnes, int x, int y, int fiX, int fiY) {
 		this.laberint = laberint;
 		this.files = files;

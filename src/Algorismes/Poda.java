@@ -1,8 +1,7 @@
 package Algorismes;
 
 public class Poda extends Laberint {
-    private boolean[][] solucio;
-    private int pesActual, capacitat, valorMax, nElem;
+    private Node solucio;
 
     /**
      * @param laberint
@@ -15,31 +14,28 @@ public class Poda extends Laberint {
      */
     public Poda(Celda[][] laberint, int files, int columnes, int x, int y, int fiX, int fiY) {
         super(laberint, files, columnes, x, y, fiX, fiY);
-        solucio = new boolean[files][columnes];
+        solucio = new Node(files, columnes);
         for (int i = 0; i < files; i++){
             for (int j = 0; j < columnes; j++){
-                solucio[i][j] = false;
+                solucio.getValor()[i][j] = false;
             }
         }
     }
 
-//    public static void main(String[] args) {
-//        minim = 0;
-//        nElem = columnes.length;
-//        solucio = new int[nElem][]; // quins paquets carregarem
-//        assignacio(0);
-//        mostrarSolucio();
-//    }
+    private void afegir(boolean[][] solucioBol){
+        Node aux = new Node(solucioBol);
+        aux.setNextNode(solucio);
+        solucio = aux;
+    }
 
     public void assignacio(int i, int j, int punts) {
-        int costActual;
-        solucio[i][j] = true;
-        laberint[i][j].setPotPassar(false);
-        mostrarSolucio();
         if(i==fiX && j == fiY){
-            System.out.println("Final del labeirnt");
-            System.exit(0);
+            afegir(solucio.getValor());
+            System.out.println(punts);
+            return;
         }
+        solucio.getValor()[i][j] = true;
+        laberint[i][j].setPotPassar(false);
         for (int k = 0; k < 4; k++){
             switch (k){
                 case 0 -> {
@@ -76,13 +72,6 @@ public class Poda extends Laberint {
             }
 
             laberint[i][j].setPotPassar(false);
-
-
-
-//            if (i == x && j == y){
-//
-//            }
-
         }
     }
 
@@ -103,7 +92,7 @@ public class Poda extends Laberint {
     private void mostrarSolucio() {
         for (int i = 0; i < files; i++) {
             for (int j = 0; j < columnes; j++) {
-                System.out.print(solucio[i][j] + "\t");
+                System.out.print(solucio.getValor()[i][j] + "\t");
             }
             System.out.println("\n");
         }
